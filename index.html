@@ -8,9 +8,11 @@
 <meta name="description" content="Invitación de boda de Nayaret & Brian · 29.11.25 · Copamarina, Guánica PR" />
 <style>
 :root{--champ:#eadcc8;--champ2:#f6eee2;--ink:#2b2b2b;--muted:#8a837a;--gold:#c8a96b;--white:#fff}
-*{box-sizing:border-box} html,body{height:100%} body{margin:0;background:#fff;color:var(--ink);font:400 16px/1.6 Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:#fff;color:var(--ink);font:400 16px/1.6 Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
 
-/* Header playa */
+/* ===== Header con playa + Sobre ===== */
 .header{position:relative;min-height:100svh;display:flex;align-items:center;justify-content:center;overflow:hidden;isolation:isolate}
 .header::before{content:"";position:absolute;inset:0;background:
   url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1600&auto=format&fit=crop") center/cover no-repeat;
@@ -23,7 +25,7 @@
   box-shadow:inset 0 2px 4px rgba(0,0,0,.18), 0 6px 18px rgba(0,0,0,.18);margin-bottom:14px}
 .stage{padding:16px;border-radius:16px;background:linear-gradient(180deg,#f7efe4,#efe1cf);border:1px solid rgba(0,0,0,.08);box-shadow:0 12px 30px rgba(0,0,0,.18)}
 
-/* Sobre */
+/* Sobre 3D realista */
 .envelope{position:relative;margin:auto;width:min(92%,940px);aspect-ratio:5/3;perspective:1200px}
 .paper{position:absolute;inset:0;border-radius:16px;background:linear-gradient(180deg,#fffaf3,#ebdecc);
  box-shadow:inset 0 0 0 1px rgba(0,0,0,.08), 0 22px 60px rgba(0,0,0,.22)}
@@ -45,9 +47,9 @@
 .open .flap{transform:rotateX(-160deg)} .open .shadow{transform:rotateX(-160deg);opacity:.06}
 .open .seal{animation:sealFade .6s ease forwards}
 @keyframes sealFade{to{opacity:0;transform:translate(-50%,-50%) scale(.96)}}
-.hint{position:absolute;left:50%;bottom:58px;transform:translateX(-50%);color:#fff;background:rgba(0,0,0,.45);padding:8px 12px;border-radius:999px;font-size:14px}
+.hint{position:absolute;left:50%;bottom:58px;transform:translateX(-50%);color:#fff;background:rgba(0,0,0,.45);padding:8px 12px;border-radius:999px;font-size:14px;letter-spacing:.02em}
 
-/* Secciones */
+/* ===== Secciones ===== */
 .section{padding:76px 18px;background:linear-gradient(180deg,#fff 0%,var(--champ2) 100%);text-align:center}
 .container{width:min(1000px,92vw);margin:0 auto}
 h1,h2{font-family:'Playfair Display',serif;margin:0 0 12px}
@@ -56,7 +58,7 @@ h1{font-size:clamp(36px,7vw,56px)} h2{font-size:clamp(26px,6vw,38px)}
 .date{color:var(--muted);font-size:14px;letter-spacing:.22em;text-transform:uppercase;margin-bottom:18px}
 .divider{width:170px;height:2px;background:var(--gold);border-radius:2px;margin:0 auto 26px}
 
-/* Itinerario sticker */
+/* Itinerario con stickers */
 .itinerary{display:flex;flex-direction:column;gap:12px;align-items:center;margin:0 auto;width:min(640px,92vw)}
 .i-item{width:100%;display:flex;align-items:center;gap:12px}
 .i-line{flex:1;height:1px;background:linear-gradient(90deg,rgba(0,0,0,.08),rgba(0,0,0,.06))}
@@ -66,9 +68,9 @@ h1{font-size:clamp(36px,7vw,56px)} h2{font-size:clamp(26px,6vw,38px)}
 .i-ic.rings::before{mask-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><path fill="%23000" d="M26 22a14 14 0 1 0 0 28a14 14 0 0 0 0-28Zm0 6a8 8 0 1 1 0 16a8 8 0 0 1 0-16Zm22-8h-6l4-6-4-4 6-4 4 6-4 4 4 4-4 6Zm-2 8a14 14 0 1 0 0 28a14 14 0 0 0 0-28Zm0 6a8 8 0 1 1 0 16a8 8 0 0 1 0-16Z"/></svg>');}
 .i-ic.glass::before{mask-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><path fill="%23000" d="M12 6h40l-4 20c-2 8-10 12-16 12S18 34 16 26L12 6Zm20 44v8h-6v-8a14 14 0 0 0 6 0Z"/></svg>');}
 .i-ic.note::before{mask-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><path fill="%23000" d="M44 8v28.7a10 10 0 1 1-6-9.3V8h6Z"/></svg>');}
-.i-time{font-weight:600}.i-label{color:var(--muted)}
+.i-time{font-weight:600;letter-spacing:.02em}.i-label{color:var(--muted)}
 
-/* Stickers */
+/* Stickers generales */
 .sticker{display:inline-flex;align-items:center;justify-content:center;width:68px;height:68px;border-radius:50%;background:#fff;border:2px solid var(--gold);box-shadow:0 2px 8px rgba(0,0,0,.06);margin:0 auto 18px}
 .pin{position:relative;width:20px;height:28px;background:var(--gold);clip-path:polygon(50% 0%,100% 38%,50% 100%,0 38%)}
 .pin::after{content:"";position:absolute;left:50%;top:32%;transform:translate(-50%,-50%);width:8px;height:8px;border-radius:50%;background:#fff}
@@ -87,14 +89,20 @@ h1{font-size:clamp(36px,7vw,56px)} h2{font-size:clamp(26px,6vw,38px)}
 .deadline .label{display:block;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
 .deadline .text{font-family:'Playfair Display',serif;font-size:18px;font-weight:600}
 
-/* Paleta */
+/* Paleta Dress Code */
 .palette{display:flex;gap:12px;justify-content:center;margin-top:10px}
 .swatch{width:44px;height:44px;border-radius:50%;border:2px solid var(--gold);box-shadow:0 2px 6px rgba(0,0,0,.06)}
 .sw1{background:#e6e6e8} .sw2{background:#b9bcc1} .sw3{background:linear-gradient(135deg,#d6d8dc 0%, #f3f4f6 50%, #c9cbd0 100%)}
 
-/* Cierre */
+/* Countdown */
+.timer{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:10px}
+.timer .box{width:120px;border:1.6px solid var(--gold);border-radius:14px;padding:14px 10px;background:#fff;box-shadow:0 6px 18px rgba(0,0,0,.06)}
+.timer .num{font:600 34px/1 'Playfair Display',serif}
+.timer .label{font-size:13px;color:var(--muted)}
+
+/* Closing con foto de anillos de fondo */
 .closing{position:relative;padding:84px 20px 120px;text-align:center;background:#fff;overflow:hidden}
-.closing::before{content:"";position:absolute;inset:0;background:url('img/rings.jpg') center/cover no-repeat;filter:brightness(.78) saturate(1.02);opacity:.28}
+.closing::before{content:"";position:absolute;inset:0;background:url('rings.jpg') center/cover no-repeat;filter:brightness(.78) saturate(1.02);opacity:.28}
 .closing .inner{position:relative;z-index:2;max-width:900px;margin:0 auto;background:rgba(255,255,255,.82);backdrop-filter:blur(3px);border:1px solid rgba(0,0,0,.06);border-radius:14px;padding:28px}
 .closing .quote{font-family:'Playfair Display',serif;font-size:20px;max-width:840px;margin:0 auto 16px;line-height:1.55}
 .closing .verse{font-style:italic;font-size:18px;color:var(--muted);margin:0 0 10px}
@@ -103,7 +111,7 @@ h1{font-size:clamp(36px,7vw,56px)} h2{font-size:clamp(26px,6vw,38px)}
 </head>
 <body>
 
-<!-- HEADER -->
+<!-- HEADER: Sobre + playa -->
 <section class="header" id="top">
   <div class="frame">
     <div class="wood" aria-hidden="true"></div>
@@ -123,7 +131,7 @@ h1{font-size:clamp(36px,7vw,56px)} h2{font-size:clamp(26px,6vw,38px)}
   <div class="hint">Toca el sello para abrir</div>
 </section>
 
-<!-- HERO -->
+<!-- PORTADA / HERO -->
 <section class="section" id="hero" hidden>
   <div class="container">
     <p class="message">El amor nos unió… y en esta historia, comienza nuestro siempre.</p>
@@ -150,7 +158,7 @@ h1{font-size:clamp(36px,7vw,56px)} h2{font-size:clamp(26px,6vw,38px)}
   </div>
 </section>
 
-<!-- LOVE STORY -->
+<!-- LOVE STORY (fotos luego) -->
 <section class="section" id="love" hidden>
   <div class="container">
     <h2>¡Nos casamos!</h2>
@@ -164,14 +172,14 @@ h1{font-size:clamp(36px,7vw,56px)} h2{font-size:clamp(26px,6vw,38px)}
   </div>
 </section>
 
-<!-- UBICACIÓN -->
+<!-- UBICACIÓN con foto DEBAJO del texto -->
 <section class="section" id="ubicacion" hidden>
   <div class="container">
     <div class="sticker"><div class="pin" aria-hidden="true"></div></div>
     <h2>Ubicación</h2>
     <p class="message" style="font-style:normal">Hotel Copamarina Beach Resort &amp; Spa<br><span style="color:var(--muted);font-size:14px">Guánica, Puerto Rico</span></p>
     <div style="max-width:820px;margin:0 auto 14px;border:1.6px solid var(--gold);border-radius:14px;overflow:hidden;box-shadow:0 12px 26px rgba(0,0,0,.08)">
-      <img src="img/copamarina.jpg" alt="Hotel Copamarina" style="display:block;width:100%;height:auto;filter:saturate(1.02) contrast(1.02) brightness(1.02)"/>
+      <img src="copamarina.jpg" alt="Hotel Copamarina" style="display:block;width:100%;height:auto;filter:saturate(1.02) contrast(1.02) brightness(1.02)"/>
     </div>
     <a class="btn" href="https://maps.app.goo.gl/QAXvq9uJSKFrhRG79" target="_blank" rel="noopener">Ver ubicación</a>
     <div class="deadline" style="margin-top:18px">
@@ -216,7 +224,7 @@ h1{font-size:clamp(36px,7vw,56px)} h2{font-size:clamp(26px,6vw,38px)}
   </div>
 </section>
 
-<!-- CONTEO -->
+<!-- CONTEO REGRESIVO -->
 <section class="section" id="countdown" hidden aria-live="polite">
   <div class="container">
     <h2>Conteo regresivo</h2>
@@ -230,7 +238,7 @@ h1{font-size:clamp(36px,7vw,56px)} h2{font-size:clamp(26px,6vw,38px)}
   </div>
 </section>
 
-<!-- CIERRE -->
+<!-- CIERRE con foto de anillos de FONDO + textos en orden correcto -->
 <section class="closing" id="closing" hidden>
   <div class="inner">
     <p class="quote">Gracias por acompañarnos en el inicio de esta nueva etapa. Su cariño, su presencia y sus oraciones hacen aún más hermoso nuestro “sí”.</p>
@@ -240,13 +248,25 @@ h1{font-size:clamp(36px,7vw,56px)} h2{font-size:clamp(26px,6vw,38px)}
 </section>
 
 <script>
+// Apertura del sobre + revelar secciones
 const env = document.getElementById('envelope');
 const sealHit = document.getElementById('sealHit');
 const ids = ['hero','love','ubicacion','rsvp','dress','obsequios','countdown','closing'];
 const secs = ids.map(id=>document.getElementById(id));
 let opened=false;
-function reveal(){ secs.forEach((el,i)=>{ setTimeout(()=>{ el.hidden=false; el.style.opacity=0; el.style.transition='opacity .6s ease'; requestAnimationFrame(()=>{ el.style.opacity=1; }); }, 230*i); }); }
-sealHit.addEventListener('click', ()=>{ if(opened) return; opened=true; env.classList.add('open'); setTimeout(()=>{ document.getElementById('hero').scrollIntoView({behavior:'smooth'}); reveal(); }, 380); });
+function reveal(){
+  secs.forEach((el,i)=>{
+    setTimeout(()=>{ el.hidden=false; el.style.opacity=0; el.style.transition='opacity .6s ease';
+      requestAnimationFrame(()=>{ el.style.opacity=1; }); }, 230*i);
+  });
+}
+sealHit.addEventListener('click', ()=>{
+  if(opened) return; opened=true;
+  env.classList.add('open');
+  setTimeout(()=>{ document.getElementById('hero').scrollIntoView({behavior:'smooth'}); reveal(); }, 380);
+});
+
+// Countdown
 const t=new Date('2025-11-29T17:00:00-04:00').getTime();
 const d=document.getElementById('d'),h=document.getElementById('h'),m=document.getElementById('m'),s=document.getElementById('s');
 function up(){const n=Date.now();let x=Math.max(0,t-n);
