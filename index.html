@@ -1,294 +1,136 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Invitación · Nayaret & Brian</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Invitación • Nayaret & Brian</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --champagne:#eadcc8;
-  --ink:#282b2b;
-  --muted:#8a837a;
-  --gold:#c8a96b;
-  --white:#ffffff;
-  --shadow:rgba(0,0,0,.12);
-  --radius:18px;
+  --champagne:#eadcc8; --ink:#2b282b; --muted:#8a837a; --gold:#c8a96b; --white:#fff; --shadow:rgba(0,0,0,.18);
 }
-
-/* Page */
 *{box-sizing:border-box}
-html,body{height:100%}
-body{
-  margin:0;
-  font:400 16px/1.5 Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-  color:var(--ink);
-  background:#f6f5f2;
-}
+html,body{height:100%;margin:0;color:var(--ink);font:400 16px/1.55 Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--white);}
 
-/* === HERO: Beach + Envelope === */
-.hero{
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  position:relative;
-  overflow:hidden;
-}
+.hero{position:relative;min-height:80vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
 .hero::before{
-  content:"";
-  position:absolute; inset:0;
-  background: url('https://images.unsplash.com/photo-1504609813442-a8924e83f76e?q=80&w=1800&auto=format&fit=crop') center/cover no-repeat;
-  filter: saturate(1.05) contrast(1.02) brightness(1.02);
-  transform:scale(1.02);
+  content:"";position:absolute;inset:0;
+  background:url('playa.jpg') center/cover no-repeat; filter:brightness(1) contrast(1.02) saturate(1.02);
 }
-.hero::after{
-  /* soft vignette for readability */
-  content:""; position:absolute; inset:0;
-  background:linear-gradient(to bottom, rgba(255,255,255,.55) 0%, rgba(255,255,255,.4) 30%, rgba(255,255,255,.35) 60%, rgba(255,255,255,.55) 100%);
+.frame{
+  position:relative; z-index:1; width:min(940px,94%); padding:28px; border-radius:32px;
+  background:rgba(255,255,255,.72); box-shadow:0 10px 30px var(--shadow); backdrop-filter:blur(5px);
 }
 
-/* Envelope wrapper (for drop shadow) */
-.envelope-wrap{
-  position:relative;
-  width:min(880px, 92vw);
-  aspect-ratio: 16 / 9.5;
-  border-radius:24px;
-  box-shadow: 0 24px 60px var(--shadow);
-  z-index:1;
-}
-
-/* Envelope body */
 .envelope{
-  position:absolute; inset:0;
-  border-radius:24px;
-  background:linear-gradient(180deg, #f6efe6 0%, #efe4d4 100%);
-  box-shadow: inset 0 2px 0 rgba(255,255,255,.9), inset 0 -6px 24px rgba(0,0,0,.08);
-  overflow:hidden;
+  position:relative; margin:28px auto; width:min(820px,92%); aspect-ratio:16/9; border-radius:16px;
+  background:linear-gradient(180deg,#fff8ee,#f2e6d4); box-shadow:0 10px 26px var(--shadow);
 }
-
-/* Inner panel (gives paper look) */
-.envelope__panel{
-  position:absolute;
-  left:5%; right:5%; top:20%; bottom:10%;
-  background:linear-gradient(180deg,#fffefa, #f5eee4);
-  border-radius:16px;
-  box-shadow: inset 0 0 0 1px rgba(0,0,0,.04);
-}
-
-/* Flap (triangular) */
-.envelope__flap{
-  position:absolute; inset:0;
-  pointer-events:none;
-}
-.envelope__flap::before{
-  content:"";
-  position:absolute; left:0; right:0; top:0; height:52%;
-  background:
-    linear-gradient( to bottom right, transparent 49.7%, rgba(0,0,0,.06) 50.2% ) left top / 50% 100% no-repeat,
-    linear-gradient( to bottom left,  transparent 49.7%, rgba(0,0,0,.06) 50.2% ) right top / 50% 100% no-repeat,
-    linear-gradient(180deg, rgba(255,255,255,.75), rgba(255,255,255,0) );
-}
-
-/* Seal */
+.envelope .panel{position:absolute;inset:24px;border-radius:14px;background:linear-gradient(180deg,#fffdf9,#f6ecdd);}
+.envelope .flap{position:absolute;left:0;right:0;top:0;height:52%;clip-path:polygon(0% 0%,100% 0%,50% 44%);
+  background:linear-gradient(180deg,rgba(0,0,0,.06),rgba(0,0,0,0)); opacity:.55;}
 .seal{
-  position:absolute; left:50%; top:54%;
-  transform:translate(-50%,-50%);
-  width:88px; height:88px; border-radius:50%;
-  background: radial-gradient(50% 50% at 35% 35%, #ffe7b5, #d0aa63 60%);
-  box-shadow:
-    inset 0 0 0 3px rgba(255,255,255,.65),
-    0 8px 16px rgba(0,0,0,.18);
-  display:grid; place-items:center;
-  cursor:pointer; user-select:none;
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-10%);width:86px;height:86px;border-radius:50%;
+  background:radial-gradient(circle at 35% 30%, #fff7, #fff0 40%), radial-gradient(circle at 40% 38%, #fff0, #fff0 44%),
+             linear-gradient(180deg,#e6d1a2,#caa765);
+  box-shadow:0 5px 15px var(--shadow), inset 0 2px 2px #fff6, inset 0 -4px 8px #00000020;
+  display:grid;place-items:center; color:#fff; font:600 22px/1 "Playfair Display",serif; letter-spacing:.02em;
 }
-.seal span{
-  font:700 26px "Playfair Display", serif;
-  letter-spacing:.06em;
-  color:#fff;
-  text-shadow: 0 1px 0 rgba(0,0,0,.15);
+.tip{position:absolute;left:50%;bottom:8px;transform:translateX(-50%);background:#3b363233;color:#fff;
+  border-radius:18px;padding:7px 12px;font-size:12px}
+
+main{padding:56px 16px;background:linear-gradient(180deg,#fff7ef, #f7efe3)}
+.container{width:min(980px,92%);margin:0 auto}
+
+h1{font-family:"Playfair Display",serif;font-weight:600;font-size:clamp(40px,6vw,64px);text-align:center;margin:4px 0 10px}
+.date{text-align:center;color:var(--muted);letter-spacing:.35em;font-weight:600;margin-bottom:22px}
+.lead{text-align:center;color:var(--muted);font-style:italic;margin:0 0 26px}
+
+.timeline{display:grid;grid-template-columns:90px 1fr;gap:18px;align-items:start;width:min(680px,100%);margin:24px auto 56px}
+.tline{height:100%;width:2px;background:linear-gradient(180deg,var(--gold),#e3d6b7)}
+.item{position:relative;padding:12px 16px;border:1px solid #eadfc7;background:#fff;border-radius:12px;box-shadow:0 4px 10px rgba(0,0,0,.05)}
+.time{font-weight:700}
+.small{color:var(--muted);font-size:13px;margin-top:2px}
+.dot{width:12px;height:12px;border-radius:50%;background:var(--gold);position:absolute;left:-27px;top:18px;box-shadow:0 0 0 4px #f6efe0}
+
+.section{padding:54px 0}
+.section h2{font-family:"Playfair Display",serif;font-size:36px;margin:0 0 12px;text-align:center}
+.section p.note{text-align:center;color:var(--muted)}
+
+.place{display:grid;grid-template-columns: 1fr; gap:20px; align-items:center; width:min(880px,100%); margin:18px auto 0}
+.place img{width:100%;border-radius:16px;box-shadow:0 8px 24px var(--shadow)}
+@media(min-width:860px){
+  .place{grid-template-columns: 1.2fr .8fr}
 }
 
-/* Tooltip */
-.tip{
-  position:absolute; left:50%; bottom:28px; transform:translateX(-50%);
-  background:rgba(0,0,0,.5); color:#fff; font-size:.9rem;
-  padding:8px 14px; border-radius:999px;
-  backdrop-filter:saturate(1.2) blur(2px);
-  z-index:3;
-}
-
-/* OPEN state */
-.hero.open .envelope-wrap{
-  animation:lift 480ms ease forwards;
-}
-@keyframes lift{
-  from{ transform:translateY(0); opacity:1}
-  to{ transform:translateY(-36vh); opacity:0}
-}
-
-.hero.open .tip{ opacity:0; pointer-events:none}
-
-/* === CONTENT === */
-.section{
-  padding:76px 22px;
-  background:linear-gradient(180deg,#fff 0%, #fbf6ef 100%);
-}
-.container{ width:min(960px, 92vw); margin:0 auto; }
-.lead{ font:400 16px "Playfair Display", serif; margin:0 0 8px; color:var(--muted); text-align:center; }
-h1{
-  font:700 clamp(34px, 5vw, 54px) "Playfair Display", serif;
-  text-align:center; margin:0;
-}
-.date{ text-align:center; letter-spacing:.4em; color:var(--muted); margin:14px 0 28px; }
-
-/* Timeline (not buttons) */
-.timeline{ width:min(680px, 92%); margin:22px auto 48px; position:relative; }
-.timeline::before{
-  content:""; position:absolute; left:22px; top:0; bottom:0; width:2px; background:rgba(200,169,107,.4);
-}
-.t-item{ display:grid; grid-template-columns:64px 1fr; gap:12px; padding:18px 0; align-items:start; }
-.t-icon{
-  width:44px; height:44px; border:2px solid rgba(200,169,107,.6);
-  border-radius:50%; display:grid; place-items:center; color:var(--gold); font-size:18px;
-  background:rgba(255,255,255,.8)
-}
-.t-text b{ font-weight:700 }
-.t-text small{ display:block; color:var(--muted) }
-
-/* Location / RSVP */
-.actions{ display:flex; gap:14px; justify-content:center; margin:26px 0 0 }
-.btn{
-  border:1px solid var(--gold); color:var(--ink); background:#fff;
-  padding:10px 14px; border-radius:999px; text-decoration:none; font-weight:600;
-  box-shadow:0 1px 0 rgba(0,0,0,.05);
-}
-
-/* Closing section with rings background */
-.closing{
-  position:relative; padding:76px 22px 120px;
-  background:#fff;
-}
-.closing::after{
-  content:""; position:absolute; inset:auto 0 0 0; height:360px;
-  background: url('https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=1800&auto=format&fit=crop') center/cover no-repeat;
-  filter:saturate(1.05) contrast(1.04);
-}
-blockquote{
-  max-width:860px; margin:0 auto 18px; text-align:center; font:400 18px/1.8 "Playfair Display", serif; color:var(--ink);
-}
-hr.sep{ width:64px; height:2px; background:var(--gold); border:0; margin:18px auto 12px }
-.cita{ text-align:center; color:var(--muted); font-style:italic; }
-.firma{ text-align:center; letter-spacing:.34em; margin-top:10px; color:var(--ink) }
-
-footer{ text-align:center; font-size:12px; color:#777; padding:24px 0 40px }
-@media (max-width:540px){
-  .seal{ width:74px; height:74px }
-  .t-item{ grid-template-columns:56px 1fr }
-  .envelope__panel{ left:6%; right:6%; top:22%; bottom:12% }
-}
+.footer-card{width:min(880px,100%);margin:28px auto 0;border-radius:18px;overflow:hidden;box-shadow:0 10px 28px var(--shadow)}
+.footer-card img{width:100%;display:block}
+.thanks{text-align:center;color:var(--ink);width:min(820px,92%);margin:32px auto 0}
+.thanks .rule{width:96px;height:3px;background:var(--gold);border-radius:2px;margin:12px auto}
+.signature{margin-top:14px;letter-spacing:.35em;color:var(--muted)}
 </style>
 </head>
 <body>
 
-<!-- HERO -->
-<section class="hero" id="hero">
-  <div class="envelope-wrap">
-    <div class="envelope">
-      <div class="envelope__panel"></div>
-      <div class="envelope__flap"></div>
-      <button class="seal" id="seal" aria-label="Abrir invitación y reproducir música">
-        <span>N &amp; B</span>
-      </button>
+<header class="hero">
+  <div class="frame">
+    <div class="envelope" id="sobre">
+      <div class="panel"></div>
+      <div class="flap"></div>
+      <div class="seal">N &amp; B</div>
     </div>
+    <div class="tip">Toca el sello para abrir y activar música</div>
   </div>
-  <div class="tip" id="tip">Toca el sello para abrir y activar música</div>
-</section>
+</header>
 
-<!-- CONTENT -->
-<section class="section" id="contenido">
+<main>
   <div class="container">
-    <p class="lead">El amor nos unió… y en esta historia, comienza nuestro siempre.</p>
-    <h1>Nayaret &amp; Brian</h1>
+    <p class="lead">El amor nos unió… y, en esta historia, comienza nuestro siempre.</p>
+    <h1>Nayaret & Brian</h1>
     <div class="date">29 · 11 · 25 · 5:00 pm</div>
 
     <div class="timeline">
-      <div class="t-item">
-        <div class="t-icon">⛪</div>
-        <div class="t-text"><b>5:00–6:00 pm</b><small>Ceremonia</small></div>
-      </div>
-      <div class="t-item">
-        <div class="t-icon">🥂</div>
-        <div class="t-text"><b>6:00–7:00 pm</b><small>Cóctel</small></div>
-      </div>
-      <div class="t-item">
-        <div class="t-icon">🎉</div>
-        <div class="t-text"><b>7:00 pm en adelante</b><small>Recepción</small></div>
-      </div>
+      <div class="tline"></div>
+      <div class="item"><span class="dot"></span><div class="time">5:00–6:00 pm</div><div class="small">Ceremonia</div></div>
+      <div></div>
+      <div class="item"><span class="dot"></span><div class="time">6:00–7:00 pm</div><div class="small">Cóctel</div></div>
+      <div></div>
+      <div class="item"><span class="dot"></span><div class="time">7:00 pm en adelante</div><div class="small">Recepción</div></div>
     </div>
 
-    <div class="actions">
-      <a class="btn" href="https://maps.app.goo.gl/" target="_blank" rel="noopener">Ver ubicación</a>
-      <a class="btn" href="#" target="_blank" rel="noopener">Confirmar asistencia</a>
-    </div>
+    <section class="section">
+      <h2>Ubicación</h2>
+      <p class="note">Hotel Copamarina Beach Resort & Spa · Guánica, Puerto Rico</p>
+      <div class="place">
+        <img src="copamarina.jpg" alt="Hotel Copamarina">
+        <div>
+          <p>Haz clic en el botón para abrir la ubicación.</p>
+          <p><a href="https://maps.apple.com/?q=Copamarina+Beach+Resort+%26+Spa" target="_blank">Ver ubicación</a></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Obsequios</h2>
+      <p class="note">El mejor obsequio que podemos recibir es compartir ese día con ustedes. Si desean acompañarnos también con un detalle, agradeceremos con cariño su aporte en efectivo.</p>
+    </section>
+
+    <section class="section">
+      <h2>Conteo regresivo</h2>
+      <p class="note">29 de noviembre de 2025 · 5:00 p.m. · Guánica, PR</p>
+      <div class="thanks">
+        <p>Gracias por acompañarnos en el inicio de esta nueva etapa. Su cariño, su presencia y sus oraciones hacen aún más hermoso nuestro “sí”.</p>
+        <div class="rule"></div>
+        <p><em>“Hallé al amor de mi alma.” — Cantares 3:4</em></p>
+        <div class="signature">CON AMOR</div>
+        <div style="text-align:center;letter-spacing:.12em;">NAYARET &amp; BRIAN</div>
+      </div>
+      <div class="footer-card">
+        <img src="anillos.jpg" alt="Anillos en la arena">
+      </div>
+    </section>
   </div>
-</section>
+</main>
 
-<section class="section">
-  <div class="container">
-    <h2 style="text-align:center; font:700 32px 'Playfair Display', serif; margin:0 0 12px">Obsequios</h2>
-    <p style="text-align:center; color:var(--muted); max-width:780px; margin:0 auto;">
-      El mejor obsequio que podemos recibir es compartir ese día con ustedes. 
-      Si desean acompañarnos también con un detalle, agradeceremos con cariño su aporte en efectivo.
-    </p>
-  </div>
-</section>
-
-<section class="closing">
-  <div class="container">
-    <blockquote>
-      Gracias por acompañarnos en el inicio de esta nueva etapa. Su cariño, su presencia y sus oraciones
-      hacen aún más hermoso nuestro “sí”.
-    </blockquote>
-    <hr class="sep">
-    <p class="cita">“Hallé al amor de mi alma.” — Cantares 3:4</p>
-    <p class="firma">CON AMOR · NAYARET &amp; BRIAN</p>
-  </div>
-</section>
-
-<footer>© Nayaret & Brian</footer>
-
-<audio id="song" preload="none">
-  <!-- Reemplaza este src por tu canción (mp3/ogg). Debe estar en hosting/Dropbox/Drive con acceso público directo. -->
-  <source src="" type="audio/mpeg">
-</audio>
-
-<script>
-const hero = document.getElementById('hero');
-const seal = document.getElementById('seal');
-const tip  = document.getElementById('tip');
-const song = document.getElementById('song');
-
-function openInvite(){
-  if(hero.classList.contains('open')) return;
-  hero.classList.add('open');
-  tip.setAttribute('aria-hidden','true');
-  // intentar reproducir música en el gesto
-  if(song && song.play){
-    song.volume = 0.9;
-    song.play().catch(()=>{
-      // si el navegador bloquea autoplay, mostramos un mini aviso
-      tip.textContent = 'Si no escuchas música, toca de nuevo para activarla';
-      tip.style.opacity = 1;
-    });
-  }
-  // desplazar hacia el contenido tras la animación
-  setTimeout(()=>{
-    document.getElementById('contenido').scrollIntoView({behavior:'smooth'});
-  }, 520);
-}
-
-seal.addEventListener('click', openInvite);
-</script>
 </body>
 </html>
