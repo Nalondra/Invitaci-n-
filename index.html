@@ -1,276 +1,258 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Invitación · Nayaret & Brian</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>
-:root{
-  --champagne:#eadcc8;
-  --ink:#2b2b2b;
-  --muted:#8a837a;
-  --gold:#c8a96b;
-  --white:#ffffff;
-  --shadow:rgba(0,0,0,.12);
-}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Invitación • Nayaret & Brian</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --ink:#2E2A26;
+      --muted:#8a837a;
+      --gold:#c8a96b;
+      --champagne:#f1eadf;
+      --paper:#fffaf2;
+      --sand:#f5efe6;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;color:var(--ink);font:400 16px/1.6 Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#fff;}
+    h1,h2{font-family:"Playfair Display",serif;color:var(--ink);margin:0 0 10px}
+    h1{font-weight:700;font-size:clamp(32px,5vw,52px)}
+    h2{font-weight:700;font-size:clamp(22px,3.5vw,32px)}
+    p{margin:10px 0;color:var(--muted)}
 
-/* Reset */
-*{box-sizing:border-box}
-html,body{height:100%}
-body{margin:0;font:400 16px/1.6 Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--ink);background:#faf8f5}
+    /* Beach background */
+    .bg{
+      position:fixed;inset:0;z-index:-2;
+      background:url('https://images.unsplash.com/photo-1500375592092-40eb2168fd21?q=80&w=1960&auto=format&fit=crop') center/cover no-repeat;
+      filter:brightness(0.95) saturate(1.04);
+    }
+    .overlay{position:fixed;inset:0;background:linear-gradient(180deg, rgba(255,255,255,.7), rgba(255,255,255,.85));z-index:-1}
 
-/* Envelope overlay (BEACH + SOBRE) */
-.overlay{
-  position:fixed;inset:0;z-index:50;
-  display:flex;align-items:center;justify-content:center;
-  background:linear-gradient(180deg,rgba(255,255,255,.85),rgba(255,255,255,.7)),
-             url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat fixed;
-  transition:opacity .6s ease;
-}
-.overlay.opened{opacity:0;pointer-events:none}
-.envelope{
-  width:min(920px,92vw); aspect-ratio: 3.5 / 2.4;
-  background:linear-gradient(180deg,#fff,#f3eadf);
-  border-radius:18px; box-shadow:0 20px 60px var(--shadow), 0 4px 0 rgba(0,0,0,.05) inset;
-  position:relative; padding:22px;
-}
-.envelope .panel{
-  position:absolute; inset:22px; border-radius:14px;
-  background:linear-gradient(180deg,#f8f3ec,#efe5d8);
-  box-shadow:0 0 0 1px rgba(0,0,0,.06) inset, 0 30px 40px rgba(0,0,0,.08) inset;
-}
-.envelope .flap{
-  position:absolute; left:10%; right:10%; top:34%;
-  height:0; border-left:32% solid transparent; border-right:32% solid transparent;
-  border-top:130px solid #e8dccd; filter:drop-shadow(0 6px 6px rgba(0,0,0,.08));
-}
-.seal{
-  position:absolute; left:50%; top:50%; transform:translate(-50%,-10%);
-  width:110px; height:110px; border-radius:999px; cursor:pointer;
-  background:radial-gradient(circle at 30% 30%, #f8e9c8, #d1ae6f 60%, #b89558 62%, #caa966);
-  box-shadow:0 10px 24px rgba(0,0,0,.18), 0 0 0 6px rgba(255,255,255,.65) inset;
-  display:grid; place-items:center;
-}
-.seal span{
-  font:700 28px "Playfair Display",serif; color:#fff; letter-spacing:.06em;
-  text-shadow:0 1px 1px rgba(0,0,0,.25);
-}
-.hint{
-  position:fixed; left:50%; bottom:22px; transform:translateX(-50%);
-  background:rgba(0,0,0,.55); color:#fff; font-size:13px; padding:10px 14px;
-  border-radius:999px; backdrop-filter:saturate(110%) blur(6px);
-  z-index:60
-}
+    /* Envelope stage */
+    .stage{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:48px}
+    .envelope-wrap{position:relative; width:min(900px,92vw); aspect-ratio:16/9; display:grid; place-items:center}
+    .envelope{
+      width:86%; height:64%;
+      background:linear-gradient(180deg,#f9f5ee,#efe6d8);
+      border-radius:18px; box-shadow:0 18px 38px rgba(0,0,0,.18), 0 4px 0 rgba(255,255,255,.8) inset;
+      position:relative;
+    }
+    /* Top flap */
+    .envelope::before{
+      content:""; position:absolute; left:0; right:0; top:0; height:44%;
+      background:conic-gradient(from 180deg at 50% 0, #e7ddcd, #efe6d8 40%, #efe6d8 60%, #e7ddcd);
+      clip-path:polygon(0 0,100% 0,50% 85%);
+      filter:drop-shadow(0 10px 10px rgba(0,0,0,.06));
+    }
+    /* Side flaps (hinted only) */
+    .envelope::after{
+      content:""; position:absolute; inset:12% 6% auto 6%; height:68%;
+      border-radius:12px; border:1px solid rgba(0,0,0,.06);
+      background:linear-gradient(180deg, rgba(255,255,255,.35), rgba(255,255,255,.1));
+    }
+    .seal{
+      position:absolute; left:50%; top:50%; transform:translate(-50%,-20%);
+      width:96px; height:96px; border-radius:50%;
+      background:radial-gradient(circle at 30% 30%, #f6e7c8, #d4b37a 70%, #b79556 100%);
+      box-shadow:0 10px 18px rgba(0,0,0,.25), 0 0 0 6px rgba(255,255,255,.6);
+      display:grid; place-items:center;
+      color:#fff; font-family:"Playfair Display", serif; font-size:28px; letter-spacing:.06em;
+      cursor:pointer; user-select:none;
+    }
+    .tip{
+      position:fixed; left:50%; bottom:18px; transform:translateX(-50%);
+      background:rgba(0,0,0,.65); color:#fff; font-size:13px; padding:8px 14px; border-radius:20px;
+      backdrop-filter:blur(4px)
+    }
 
-/* Content */
-header{min-height:56vh; display:flex; align-items:flex-end; justify-content:center; padding:6vh 20px 0}
-.container{width:min(960px,92vw); margin:0 auto}
-h1,h2{font-family:"Playfair Display",serif;margin:0 0 8px}
-h1{font-size: clamp(32px, 6vw, 54px)}
-h2{font-weight:600;font-size: clamp(22px,4vw,34px)}
-.subtle{color:var(--muted);font-style:italic;text-align:center;margin-top:8px}
+    /* Main content */
+    .content{display:none}
+    .show .stage{display:none}
+    .show .content{display:block}
 
-.divider{width:72px;height:2px;background:var(--gold);border-radius:2px;margin:20px auto}
+    .section{padding:70px 20px;background:linear-gradient(180deg,#fff,#fbf7f0);}
+    .container{width:min(980px,92vw);margin:0 auto}
+    .kicker{color:var(--muted);text-align:center;font-style:italic;margin-bottom:14px}
+    .date{color:var(--muted); text-align:center; letter-spacing:.4em}
+    .divider{width:96px;height:2px;background:var(--gold);border-radius:2px;margin:16px auto 26px}
 
-/* Itinerary line */
-.timeline{width:min(680px,92vw); margin:28px auto 56px; position:relative}
-.timeline:before{content:""; position:absolute; left:26px; top:0; bottom:0; width:2px;
-  background:linear-gradient(180deg, #e9dfd2, #dbcbb6)}
-.item{display:grid; grid-template-columns:56px 1fr; gap:14px; align-items:start; margin:22px 0}
-.icon{
-  height:36px;width:36px;border-radius:50%; background:#fff; display:grid;place-items:center;
-  border:1px solid rgba(0,0,0,.06); box-shadow:0 2px 6px rgba(0,0,0,.06)
-}
-.icon svg{width:18px;height:18px; fill:var(--gold)}
-.when{font-weight:600}
-.label{color:var(--muted);margin-top:2px}
+    /* Itinerary - no buttons, clean timeline */
+    .timeline{width:min(720px,92vw);margin:26px auto 0;position:relative}
+    .timeline::before{content:"";position:absolute;left:22px;top:0;bottom:0;width:1px;background:rgba(0,0,0,.1)}
+    .slot{display:grid;grid-template-columns:46px 1fr;gap:12px;align-items:start;padding:18px 0;border-bottom:1px dashed rgba(0,0,0,.06)}
+    .dot{width:14px;height:14px;border-radius:50%;background:var(--gold);margin-top:6px;box-shadow:0 0 0 4px rgba(200,169,107,.15)}
+    .slot strong{display:block}
+    .slot small{display:block;color:var(--muted)}
 
-/* Sections */
-.section{padding:56px 0; background:linear-gradient(180deg,#fff 0%, var(--champagne) 100%)}
-.section.alt{background:#fff}
-.card{
-  background:#fff; border:1px solid rgba(0,0,0,.06); border-radius:18px; padding:22px;
-  box-shadow:0 12px 26px rgba(0,0,0,.06)
-}
-.center{text-align:center}
-.btn{display:inline-block; padding:10px 16px; border:1px solid var(--gold); border-radius:12px; text-decoration:none; color:var(--ink)}
-.btn:active{transform:scale(.98)}
+    /* Location */
+    .card{background:#fff;border:1px solid rgba(0,0,0,.06);border-radius:14px;padding:20px;box-shadow:0 8px 22px rgba(0,0,0,.06)}
+    .btn{display:inline-block;padding:10px 16px;border:1px solid var(--gold);border-radius:10px;text-decoration:none;color:var(--ink);}
+    .btn:hover{background:var(--champagne)}
 
-/* Dress code palette */
-.palette{display:flex; gap:10px; justify-content:center; margin-top:16px; flex-wrap:wrap}
-.swatch{width:42px;height:42px;border-radius:10px;border:1px solid rgba(0,0,0,.08)}
-.s1{background:#d9d9d9}.s2{background:#bdbdbd}.s3{background:#a6a6a6}.s4{background:#ececec}.s5{background:#f4f4f4}
+    /* Dress code sample */
+    .swatches{display:flex;gap:10px;justify-content:center;margin:16px 0 10px}
+    .sw{width:28px;height:28px;border-radius:50%;border:1px solid rgba(0,0,0,.08)}
+    .sw.s1{background:#dcdcdc}.sw.s2{background:#b8bcc1}.sw.s3{background:#e3e3e3}.sw.s4{background:#c0c0c0}
 
-/* Rings banner */
-.banner{
-  width:min(960px,92vw); margin:24px auto 80px; border-radius:22px; overflow:hidden;
-  box-shadow:0 12px 40px rgba(0,0,0,.12)
-}
-.banner img{display:block;width:100%;height:auto}
+    /* Countdown */
+    .count{display:flex;gap:14px;justify-content:center;margin:20px 0}
+    .pill{min-width:72px;padding:12px;border-radius:12px;background:#fff;border:1px solid rgba(0,0,0,.08);text-align:center}
+    .pill b{display:block;font-size:22px}
 
-/* Footer mini */
-footer{padding:40px 0 80px;text-align:center;color:var(--muted)}
-.small{font-size:14px;color:var(--muted)}
-</style>
+    /* Final section with rings photo as background */
+    .final{
+      position:relative;
+      padding:80px 20px;
+      background:linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,.92)),
+        url('https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=1920&auto=format&fit=crop') center/cover no-repeat;
+    }
+    .thanks{max-width:880px;margin:0 auto;text-align:center}
+    .thanks p{color:var(--ink)}
+    .verse{margin-top:12px;color:var(--muted);font-style:italic}
+    .sig{letter-spacing:.35em;margin-top:10px}
+
+    /* Footer space */
+    footer{height:40px}
+    @media (prefers-reduced-motion:no-preference){
+      .seal{transition:transform .25s ease, box-shadow .25s ease}
+      .seal:active{transform:translate(-50%,-20%) scale(.98); box-shadow:0 6px 12px rgba(0,0,0,.25), 0 0 0 4px rgba(255,255,255,.8)}
+    }
+  </style>
 </head>
 <body>
+  <div class="bg" aria-hidden="true"></div>
+  <div class="overlay" aria-hidden="true"></div>
 
-<!-- Envelope OVERLAY -->
-<div class="overlay" id="overlay">
-  <div class="envelope">
-    <div class="panel"></div>
-    <div class="flap"></div>
-    <button class="seal" id="openBtn" aria-label="Abrir invitación y activar música"><span>N &amp; B</span></button>
-  </div>
-</div>
-<div class="hint" id="hint">Toca el sello para abrir y activar música</div>
-
-<!-- CONTENT -->
-<header>
-  <div class="container center">
-    <div class="subtle">El amor nos unió… y, en esta historia, comienza nuestro siempre.</div>
-    <h1>Nayaret &amp; Brian</h1>
-    <div class="small">29 · 11 · 25 · 5:00 pm</div>
-    <div class="divider"></div>
-
-    <div class="timeline">
-      <div class="item">
-        <div class="icon" aria-hidden="true">
-          <!-- rings icon -->
-          <svg viewBox="0 0 24 24"><path d="M8.5 12a4.5 4.5 0 1 1 0 9a4.5 4.5 0 0 1 0-9zm7-9h5l-2.5 3H13l2.5-3zM15.5 12a4.5 4.5 0 1 1 0 9a4.5 4.5 0 0 1 0-9zm-7 2a2.5 2.5 0 1 0 0 5a2.5 2.5 0 0 0 0-5zm7 0a2.5 2.5 0 1 0 0 5a2.5 2.5 0 0 0 0-5z"/></svg>
-        </div>
-        <div>
-          <div class="when">5:00–6:00 pm</div>
-          <div class="label">Ceremonia</div>
-        </div>
-      </div>
-      <div class="item">
-        <div class="icon" aria-hidden="true">
-          <!-- cocktail icon -->
-          <svg viewBox="0 0 24 24"><path d="M3 5h18l-7 7v6h-4v-6L3 5zm4 14h10v2H7z"/></svg>
-        </div>
-        <div>
-          <div class="when">6:00–7:00 pm</div>
-          <div class="label">Cóctel</div>
-        </div>
-      </div>
-      <div class="item">
-        <div class="icon" aria-hidden="true">
-          <!-- party icon -->
-          <svg viewBox="0 0 24 24"><path d="M4 20l6-6l10 4l-16 2zM10 4l10 10l2-2L12 2l-2 2z"/></svg>
-        </div>
-        <div>
-          <div class="when">7:00 pm en adelante</div>
-          <div class="label">Recepción</div>
-        </div>
+  <!-- ENVELOPE -->
+  <main class="stage" id="stage">
+    <div class="envelope-wrap" aria-label="Sobre">
+      <div class="envelope">
+        <div class="seal" id="seal" aria-label="Sello N&B" role="button" tabindex="0">N &amp; B</div>
       </div>
     </div>
-  </div>
-</header>
+  </main>
+  <div class="tip" id="tip">Toca el sello para abrir y activar música</div>
 
-<section class="section alt">
-  <div class="container center">
-    <h2>¡Nos casamos!</h2>
-    <p class="subtle" style="font-style:normal">
-      Desde el primer día supimos que estábamos destinados a compartir la vida.
-      El 29 de noviembre del 2025 celebraremos este amor que nos ha acompañado y crecido con nosotros desde el 2017.
-    </p>
-  </div>
-</section>
+  <!-- CONTENT -->
+  <article class="content" id="content">
+    <section class="section">
+      <div class="container">
+        <div class="kicker">El amor nos unió… y en esta historia, comienza nuestro siempre.</div>
+        <h1 style="text-align:center">Nayaret &amp; Brian</h1>
+        <div class="date">29 · 11 · 25 · 5:00 pm</div>
+        <div class="divider"></div>
 
-<section class="section">
-  <div class="container center">
-    <div class="icon" style="margin:0 auto 12px"><svg viewBox="0 0 24 24"><path d="M12 2l7 7l-7 7l-7-7l7-7zm0 5a2 2 0 1 1 0 4a2 2 0 0 1 0-4z"/></svg></div>
-    <h2>Ubicación</h2>
-    <div class="subtle" style="font-style:normal">Hotel Copamarina Beach Resort & Spa<br>Guánica, Puerto Rico</div>
-    <p><a class="btn" href="https://maps.app.goo.gl/QAXvq9uJSKFrhRG79" target="_blank" rel="noopener">Ver ubicación</a></p>
-    <div class="small subtle">Fecha límite de confirmación: 1 de noviembre de 2025 • 11:59 p.m.</div>
-  </div>
-</section>
+        <div class="timeline">
+          <div class="slot">
+            <span class="dot" aria-hidden="true"></span>
+            <div><strong>5:00–6:00 pm</strong><small>Ceremonia</small></div>
+          </div>
+          <div class="slot">
+            <span class="dot" aria-hidden="true"></span>
+            <div><strong>6:00–7:00 pm</strong><small>Cóctel</small></div>
+          </div>
+          <div class="slot">
+            <span class="dot" aria-hidden="true"></span>
+            <div><strong>7:00 pm en adelante</strong><small>Recepción</small></div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<section class="section alt">
-  <div class="container center">
-    <div class="icon" style="margin:0 auto 10px"><svg viewBox="0 0 24 24"><path d="M12 2l4 8H8l4-8zm-5 10h10l-3 10H10L7 12z"/></svg></div>
-    <h2>Código de vestimenta</h2>
-    <p class="subtle" style="font-style:normal">Formal · Gris claro/medio o plateado.</p>
-    <div class="small subtle" style="font-style:normal">Nota: Los hombres pueden usar camisa de botones en tonalidades blancas, crema o nude.</div>
-    <div class="palette">
-      <div class="swatch s1" title="gris medio"></div>
-      <div class="swatch s2" title="gris"></div>
-      <div class="swatch s3" title="gris humo"></div>
-      <div class="swatch s4" title="gris claro"></div>
-      <div class="swatch s5" title="plateado claro"></div>
-    </div>
-    <p style="margin-top:16px"><a class="btn" href="https://pin.it/6KxIMjIEI" target="_blank" rel="noopener">Ver inspiración</a></p>
-  </div>
-</section>
+    <section class="section">
+      <div class="container" style="text-align:center">
+        <h2>¡Nos casamos!</h2>
+        <p>Desde el primer día supimos que estábamos destinados a compartir la vida. El 29 de noviembre del 2025 celebraremos este amor que nos ha acompañado y crecido con nosotros desde el 2017.</p>
+      </div>
+    </section>
 
-<section class="section">
-  <div class="container center">
-    <div class="icon" style="margin:0 auto 10px"><svg viewBox="0 0 24 24"><path d="M12 22l-8-8l8-8l8 8l-8 8zm0-14.5l-5.5 5.5L12 18.5l5.5-5.5L12 7.5z"/></svg></div>
-    <h2>Obsequios</h2>
-    <p class="subtle" style="font-style:normal">El mejor obsequio que podemos recibir es compartir ese día con ustedes. Si desean acompañarnos también con un detalle, agradeceremos con cariño su aporte en efectivo.</p>
-  </div>
-</section>
+    <section class="section">
+      <div class="container" style="text-align:center">
+        <h2>Ubicación</h2>
+        <p>Hotel Copamarina Beach Resort & Spa<br><small>Guánica, Puerto Rico</small></p>
+        <p><a class="btn" href="https://maps.app.goo.gl/8r4HfqU6oZ2g3z4d6" target="_blank" rel="noopener">Ver ubicación</a></p>
+      </div>
+    </section>
 
-<section class="section alt">
-  <div class="container center">
-    <h2>Conteo regresivo</h2>
-    <div id="count" style="display:flex;gap:12px;justify-content:center;margin:16px 0 4px"></div>
-    <div class="small subtle">29 de noviembre de 2025 · 5:00 p.m. · Guánica, PR</div>
-  </div>
-</section>
+    <section class="section">
+      <div class="container" style="text-align:center">
+        <h2>Código de vestimenta</h2>
+        <p>Formal · Gris claro/medio o plateado. El código nos ayuda a crear juntos una atmósfera elegante y armoniosa.</p>
+        <p style="font-size:14px"><em>Nota:</em> Los hombres pueden usar camisa de botones en tonalidades blancas, crema o nude.</p>
+        <div class="swatches" aria-label="Gama de colores">
+          <span class="sw s1" title="Gris claro"></span>
+          <span class="sw s2" title="Gris medio"></span>
+          <span class="sw s3" title="Plateado claro"></span>
+          <span class="sw s4" title="Plateado medio"></span>
+        </div>
+        <p><a class="btn" href="https://pin.it/6KxIMjIEI" target="_blank" rel="noopener">Ver inspiración</a></p>
+      </div>
+    </section>
 
-<section class="section">
-  <div class="container center">
-    <p class="subtle" style="font-style:normal;max-width:780px;margin:0 auto 8px">
-      Gracias por acompañarnos en el inicio de esta nueva etapa. Su cariño, su presencia y sus oraciones
-      hacen aún más hermoso nuestro “sí”.
-    </p>
-    <div class="subtle" style="margin:10px 0 6px">“Hallé al amor de mi alma.” — Cantares 3:4</div>
-    <div class="small" style="letter-spacing:.32em;margin:18px 0 10px">CON AMOR</div>
-    <div style="font-weight:600">NAYARET &amp; BRIAN</div>
+    <section class="section">
+      <div class="container" style="text-align:center">
+        <h2>Obsequios</h2>
+        <p>El mejor obsequio que podemos recibir es compartir ese día con ustedes. Si desean acompañarnos también con un detalle, agradeceremos con cariño su aporte en efectivo.</p>
+      </div>
+    </section>
 
-    <div class="banner" aria-label="Anillos">
-      <img src="rings.jpg" alt="Anillos en la arena">
-    </div>
-  </div>
-</section>
+    <section class="section">
+      <div class="container" style="text-align:center">
+        <h2>Conteo regresivo</h2>
+        <div class="count" id="count"></div>
+        <small class="muted">29 de noviembre de 2025 · 5:00 p.m. · Guánica, PR</small>
+      </div>
+    </section>
 
-<footer class="small">© 2025 Nayaret & Brian</footer>
+    <section class="final">
+      <div class="thanks">
+        <p>Gracias por acompañarnos en el inicio de esta nueva etapa. Su cariño, su presencia y sus oraciones hacen aún más hermoso nuestro “sí”.</p>
+        <p class="verse">“Hallé al amor de mi alma.” — Cantares 3:4</p>
+        <p class="sig">CON AMOR</p>
+        <p style="letter-spacing:.2em">NAYARET &amp; BRIAN</p>
+      </div>
+    </section>
+    <footer></footer>
+  </article>
 
-<script>
-// Open overlay + (optional) audio start if available
-const overlay = document.getElementById('overlay');
-const btn = document.getElementById('openBtn');
-const hint = document.getElementById('hint');
-btn.addEventListener('click', async ()=>{
-  overlay.classList.add('opened'); hint.remove();
-  // intenta reproducir si existe un audio con id "song"
-  const a = document.getElementById('song');
-  if(a){ try { await a.play(); } catch(e){} }
-});
+  <!-- Audio placeholder (añadiremos tu archivo luego) -->
+  <audio id="bgm" preload="auto">
+    <!-- Reemplazar src por tu archivo MP3 cuando lo tengamos -->
+    <!-- <source src="TU_ARCHIVO.mp3" type="audio/mpeg"> -->
+  </audio>
 
-// Simple countdown to 2025-11-29T17:00:00-04:00 Puerto Rico
-const date = new Date('2025-11-29T17:00:00-04:00').getTime();
-const el = document.getElementById('count');
-function pad(n){return String(n).padStart(2,'0')}
-function tick(){
-  const now = Date.now();
-  let diff = Math.max(0, date - now);
-  const d = Math.floor(diff/86400000); diff%=86400000;
-  const h = Math.floor(diff/3600000); diff%=3600000;
-  const m = Math.floor(diff/60000); diff%=60000;
-  const s = Math.floor(diff/1000);
-  el.innerHTML = ['DÍAS:'+pad(d),'HORAS:'+pad(h),'MINUTOS:'+pad(m),'SEGUNDOS:'+pad(s)]
-    .map(t=>`<span class="card" style="padding:12px 14px;border:1px solid rgba(0,0,0,.06);border-radius:12px;background:#fff">${t}</span>`).join('');
-}
-tick(); setInterval(tick,1000);
-</script>
+  <script>
+    // Open invitation on seal click
+    const seal = document.getElementById('seal');
+    const tip = document.getElementById('tip');
+    const html = document.documentElement;
+    const audio = document.getElementById('bgm');
+    function openInvite(){
+      html.classList.add('show');
+      tip.textContent = 'Si no escuchas música, toca de nuevo para activarla';
+      if(audio && audio.play){ audio.play().catch(()=>{}); }
+    }
+    seal?.addEventListener('click', openInvite);
+    seal?.addEventListener('keydown', (e)=>{ if(e.key==='Enter' || e.key===' '){ e.preventDefault(); openInvite(); }});
 
-<!-- (Opcional) audio: cuando tengas el mp3, colócalo como song.mp3 en la misma carpeta -->
-<!-- <audio id="song" src="song.mp3" preload="auto"></audio> -->
-
+    // Countdown
+    const end = new Date('2025-11-29T17:00:00-04:00').getTime();
+    const holder = document.getElementById('count');
+    function tick(){
+      const now = Date.now();
+      let d = Math.max(0, end - now);
+      const days = Math.floor(d/86400000); d%=86400000;
+      const hrs = Math.floor(d/3600000);   d%=3600000;
+      const min = Math.floor(d/60000);     d%=60000;
+      const sec = Math.floor(d/1000);
+      holder.innerHTML = ['DÍAS', 'HORAS', 'MINUTOS', 'SEGUNDOS'].map((label,i)=>{
+        const v=[days,hrs,min,sec][i];
+        return `<div class="pill"><b>${v}</b><small>${label}</small></div>`;
+      }).join('');
+      requestAnimationFrame(()=>setTimeout(tick, 1000));
+    }
+    tick();
+  </script>
 </body>
 </html>
