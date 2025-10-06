@@ -12,7 +12,7 @@
 
   <style>
     :root{
-      /* Paleta acordada (champagne, dorados, crema) */
+      /* Paleta acordada (champagne, dorados suaves, crema) */
       --champagne:#eadcc8;
       --champagne-2:#f6efe6;
       --gold:#c9a86b;
@@ -65,7 +65,6 @@
     /* Botón invisible sobre el sello (exacto al centro-bajo) */
     .seal-hit{
       position:absolute;
-      /* Ajustes finos centrados sobre el sello de la FOTO */
       left:50%;
       top:59.5%;
       width:104px; height:104px;
@@ -74,12 +73,11 @@
       background:transparent;
       border-radius:50%;
       cursor:pointer;
-      z-index:2;             /* Siempre por ENCIMA de la imagen */
+      z-index:2;
       -webkit-tap-highlight-color: transparent;
     }
     .seal-hit:focus{outline:0}
     .seal-hit::after{content:""; position:absolute; inset:0; border-radius:50%}
-    /* Tooltip sutil */
     .hint{
       position:absolute; left:50%; bottom:12px; transform:translateX(-50%);
       font-size:.9rem; color:#fff; background:rgba(0,0,0,.55);
@@ -117,13 +115,15 @@
     }
     .love-block .body{ text-align:center; color:var(--muted) }
 
-    /* Itinerario */
-    .timeline .row{display:flex; gap:18px; padding:12px 0; align-items:flex-start}
-    .timeline .time{min-width:130px; font-weight:700}
+    /* Itinerario (centrado y con más aire) */
+    .timeline-wrap{display:flex;justify-content:center}
+    .timeline{width:min(720px,100%)}
+    .timeline .row{display:grid; grid-template-columns:180px 1fr; gap:22px; padding:14px 0; align-items:center}
+    .timeline .time{font-weight:700}
     .timeline .desc{color:var(--muted)}
+    .timeline .line{grid-column:1/-1; height:1px; background:rgba(0,0,0,.08)}
     @media (max-width:640px){
-      .timeline .row{flex-direction:column}
-      .timeline .time{min-width:auto}
+      .timeline .row{grid-template-columns:1fr}
     }
 
     /* Dos columnas (Ubicación / Foto) */
@@ -136,7 +136,10 @@
       transition:transform .12s ease, background .2s ease;
     }
     .btn:hover{transform:translateY(-1px); background:rgba(201,168,107,.1)}
-    .swatch{width:18px;height:18px;border-radius:50%;display:inline-block;margin:0 6px;border:2px solid rgba(0,0,0,.08)}
+
+    /* Paleta (solo grises y plateado) */
+    .palette{display:flex;gap:10px;justify-content:center;margin-top:12px}
+    .swatch{width:18px;height:18px;border-radius:50%;display:inline-block;border:2px solid rgba(0,0,0,.08);box-shadow:0 4px 12px rgba(0,0,0,.08)}
 
     /* Conteo regresivo */
     .count-row{display:flex;gap:12px;justify-content:center;margin:18px 0}
@@ -186,13 +189,23 @@
       </div>
     </section>
 
-    <!-- Itinerario -->
+    <!-- Itinerario (centrado) -->
     <section id="itinerario">
       <h2 class="section-title">Itinerario</h2>
-      <div class="block timeline">
-        <div class="row"><div class="time">5:00–6:00 pm</div><div class="desc"><strong>Ceremonia</strong></div></div>
-        <div class="row"><div class="time">6:00–7:00 pm</div><div class="desc"><strong>Cóctel</strong></div></div>
-        <div class="row"><div class="time">7:00 pm en adelante</div><div class="desc"><strong>Recepción</strong></div></div>
+      <div class="timeline-wrap">
+        <div class="block timeline">
+          <div class="row">
+            <div class="time">5:00–6:00 pm</div><div class="desc"><strong>Ceremonia</strong></div>
+          </div>
+          <div class="line"></div>
+          <div class="row">
+            <div class="time">6:00–7:00 pm</div><div class="desc"><strong>Cóctel</strong></div>
+          </div>
+          <div class="line"></div>
+          <div class="row">
+            <div class="time">7:00 pm en adelante</div><div class="desc"><strong>Recepción</strong></div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -222,27 +235,25 @@
       </div>
     </section>
 
-    <!-- Dress code -->
+    <!-- Dress code (AJUSTADO SOLO AQUÍ) -->
     <section id="dresscode">
       <h2 class="section-title">Código de vestimenta</h2>
       <div class="block" style="text-align:center">
-        <div>Formal · Gris claro/medio o plateado.
-          <span class="muted">Nota: los hombres pueden usar camisas en blanco, crema o nude.</span>
-        </div>
-        <div style="height:12px"></div>
-        <div aria-label="Gama de colores">
-          <span class="swatch" style="background:#e8e1d6"></span>
-          <span class="swatch" style="background:#d7d0c5"></span>
-          <span class="swatch" style="background:#bfb7ac"></span>
-          <span class="swatch" style="background:#c9a86b"></span>
-          <span class="swatch" style="background:#eee9e1"></span>
+        <p><strong>Formal · Gris claro/medio o plateado.</strong></p>
+        <p class="muted"><strong>Nota:</strong> la camisa de abajo de los hombres puede ser blanca, crema o nude.</p>
+        <div class="palette" aria-label="Gama de colores (grises/plateado)">
+          <span class="swatch" style="background:#DADADA" title="gris claro"></span>
+          <span class="swatch" style="background:#C4C4C4" title="gris medio-claro"></span>
+          <span class="swatch" style="background:#AFAFAF" title="gris medio"></span>
+          <span class="swatch" style="background:#8F8F8F" title="gris medio-oscuro"></span>
+          <span class="swatch" style="background:#BFC6CC" title="plateado"></span>
         </div>
         <div style="height:14px"></div>
         <a class="btn" href="https://www.pinterest.com/search/pins/?q=wedding%20guest%20silver%20grey%20champagne" target="_blank" rel="noopener">Ver inspiración en Pinterest</a>
       </div>
     </section>
 
-    <!-- Obsequios -->
+    <!-- Obsequios (con admiración correcta) -->
     <section id="obsequios">
       <h2 class="section-title">Obsequios</h2>
       <div class="block" style="text-align:center">
@@ -296,7 +307,6 @@
     function openInvite(){
       if(opened) return;
       opened = true;
-      // Play sólo si fue un toque real (iOS rule)
       bgm.currentTime = 0;
       const tryPlay = bgm.play();
       if(tryPlay && typeof tryPlay.then === 'function'){ tryPlay.catch(()=>{}); }
