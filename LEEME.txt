@@ -1,12 +1,10 @@
-INSTRUCCIONES RÁPIDAS
-1) Sube TODOS estos archivos a tu repositorio (carpeta raíz):
+INSTRUCCIONES RÁPIDAS (versión final)
+1) Sube estos archivos a tu repositorio (carpeta raíz):
    - index.html
-   - envelope.png
-   - copamarina.jpg
-   - anillos.jpg
-   - music.mp3
-2) No cambies los nombres.
-3) Abre tu página en: https://<tu-usuario>.github.io/<tu-repo>/
-4) Toca el sello para que se muestre la invitación y comience la música (sonará en bucle).
-
-Sugerencia: si GitHub Pages tarda en actualizar, refresca con "force reload".
+   - LEEME.txt
+2) Asegúrate de que existan en el repo con EXACTOS nombres estas imágenes y audio:
+   - 4E828E39-AF2C-42A6-AA18-96AC1A6DB69A.png   (sobre con playa)
+   - IMG_1149.jpeg   (foto Copamarina)
+   - IMG_1151.jpeg   (foto anillos)
+   - music.mp3       (canción)
+3) Publica/actualiza GitHub Pages (branch main). Listo.
