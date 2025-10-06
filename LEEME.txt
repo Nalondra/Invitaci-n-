@@ -1,0 +1,10 @@
+INSTRUCCIONES RÁPIDAS
+1) Mantén estos nombres en la raíz del repo (sin cambiar): 
+   - index.html
+   - envelope.png
+   - copamarina.jpg
+   - anillos.jpg
+   - music.mp3
+2) Sube index.html y LEEME.txt (no incluyo imágenes para no sobreescribir las tuyas).
+3) Fuerza recarga: https://TUUSUARIO.github.io/?v=2
+4) iOS: asegúrate de que el interruptor de silencio esté desactivado. El audio hace fade-in (~1.5s) y no se repite.
