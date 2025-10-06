@@ -1,10 +1,12 @@
 INSTRUCCIONES RÁPIDAS
-1) Mantén estos nombres en la raíz del repo (sin cambiar): 
+1) Sube TODOS estos archivos a tu repositorio (carpeta raíz):
    - index.html
    - envelope.png
    - copamarina.jpg
    - anillos.jpg
    - music.mp3
-2) Sube index.html y LEEME.txt (no incluyo imágenes para no sobreescribir las tuyas).
-3) Fuerza recarga: https://TUUSUARIO.github.io/?v=2
-4) iOS: asegúrate de que el interruptor de silencio esté desactivado. El audio hace fade-in (~1.5s) y no se repite.
+2) No cambies los nombres.
+3) Abre tu página en: https://<tu-usuario>.github.io/<tu-repo>/
+4) Toca el sello para que se muestre la invitación y comience la música (sonará en bucle).
+
+Sugerencia: si GitHub Pages tarda en actualizar, refresca con "force reload".
