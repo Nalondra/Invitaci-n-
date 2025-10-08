@@ -1,231 +1,215 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Invitación · Nayaret & Brian</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="audio" href="music.mp3">
 <style>
-:root{
-  --bg:#faf7f3;
-  --card:#ffffff;
-  --ink:#1c1b1a;
-  --muted:#6b6b6b;
-  --gold:#b28b45;
-  --gold-2:#e6d4b5;
-  --shadow: 0 10px 30px rgba(0,0,0,.08);
-}
-*{box-sizing:border-box}
-html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.55}
-h1,h2,h3{font-family:"Playfair Display",serif;margin:0 0 .6rem}
-h1{font-weight:700;font-size:clamp(32px,5vw,56px);letter-spacing:.8px}
-h2{font-weight:700;font-size:clamp(26px,4vw,40px)}
-p{margin:.5rem 0;color:var(--muted)}
-.container{max-width:980px;margin:0 auto;padding:28px 20px}
-.center{text-align:center}
-.hr{height:2px;width:72px;background:linear-gradient(90deg,transparent, var(--gold), transparent);border-radius:2px;margin:10px auto 0}
-.card{background:var(--card);border-radius:16px;box-shadow:var(--shadow);padding:22px}
-.sp-40{height:40px}
-.btn{display:inline-block;border:2px solid #d5c1a1;border-radius:26px;padding:10px 18px;color:#6a5631;text-decoration:none;font-weight:600;background:#fff;box-shadow:0 4px 14px rgba(0,0,0,.06)}
-.btn:hover{filter:brightness(.96)}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-@media (max-width:820px){.grid2{grid-template-columns:1fr}}
-
-/* ENVELOPE MODAL */
-#overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);backdrop-filter:blur(3px);display:flex;align-items:center;justify-content:center;z-index:50}
-#envelopeBox{background:#fff;border-radius:14px;box-shadow:0 20px 60px rgba(0,0,0,.25);padding:0;overflow:hidden;max-width:860px;width:92%}
-.envelopeWrap{position:relative}
-.envelopeWrap img{display:block;width:100%;height:auto}
-/* invisible button aligned to the wax seal area */
-#waxBtn{position:absolute;left:50%;bottom:14%;transform:translate(-50%,0);width:88px;height:88px;border-radius:50%;border:none;background:transparent;cursor:pointer;}
-
-/* TIMELINE */
-.tl{background:#fff;border-radius:16px;box-shadow:var(--shadow);overflow:hidden}
-.tl-row{display:grid;grid-template-columns:180px 1fr;border-bottom:1px solid #efefef;padding:16px 18px}
-.tl-row:last-child{border-bottom:0}
-.tl-time{font-weight:700}
-.tl-item{color:#444}
-
-/* Palette dots (grays) */
-.palette{display:flex;gap:10px;margin-top:8px}
-.dot{width:14px;height:14px;border-radius:50%;border:1px solid rgba(0,0,0,.18)}
-.dot.g1{background:#e5e7ea}
-.dot.g2{background:#cfd3d8}
-.dot.g3{background:#b9bfc6}
-.dot.g4{background:#9aa3ac}
-
-/* Countdown */
-.count{display:flex;gap:14px;justify-content:center;margin:16px 0}
-.box{background:#fff;padding:12px 16px;border-radius:12px;box-shadow:var(--shadow);min-width:78px}
-.box strong{display:block;font-size:26px}
-.box span{font-size:11px;color:#777;letter-spacing:1px}
-
-/* Closing image style */
-.closing-img{border-radius:16px;box-shadow:var(--shadow);width:100%;height:auto}
-
-/* Footer */
-footer{color:#888;text-align:center;margin:30px 0 40px}
+  :root{
+    --bg:#faf6f1;
+    --panel:#ffffff;
+    --ink:#1f1c17;
+    --muted:#7a746a;
+    --gold:#c7a56a;
+    --shadow:0 10px 30px rgba(0,0,0,.08);
+  }
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family: ui-serif, 'Georgia', 'Times New Roman', serif;}
+  .wrap{max-width:980px;margin:0 auto;padding:24px;}
+  h1,h2,h3{font-weight:800; letter-spacing:.2px; margin:0 0 10px}
+  h1{font-size: clamp(34px,5vw,56px);text-align:center;}
+  h2{font-size: clamp(26px,4vw,38px);text-align:center;}
+  p{line-height:1.6}
+  .muted{color:var(--muted)}
+  .card{background:var(--panel);border-radius:18px;box-shadow:var(--shadow);padding:22px}
+  .center{text-align:center}
+  .btn{display:inline-block;border:2px solid #c7a56a;padding:10px 18px;border-radius:28px;text-decoration:none;color:var(--ink);font-weight:600}
+  .divider{height:18px}
+  .lead{font-size: clamp(14px,2.1vw,17px); text-align:center; color:var(--muted)}
+  /* Envelope overlay */
+  #overlay{
+    position: fixed; inset:0; background:rgba(0,0,0,.42);
+    display:flex; align-items:center; justify-content:center; z-index:9999;
+  }
+  #envelopeModal{position:relative; width:min(880px,92vw); border-radius:18px; box-shadow:var(--shadow);}
+  #envelopeModal img{display:block; width:100%; border-radius:18px}
+  #sealHit{
+    position:absolute; left:50%; top:66%;
+    transform:translate(-50%,-50%);
+    width:90px; height:90px; border-radius:50%;
+    background:transparent; border:none; cursor:pointer; z-index:3;
+  }
+  .hint{position:absolute; left:50%; bottom:14px; transform:translateX(-50%);
+        background:rgba(0,0,0,.6); color:#fff; padding:8px 12px; border-radius:16px; font-size:13px}
+  /* Timeline */
+  .timeline{overflow:hidden}
+  .row{display:grid; grid-template-columns: 180px 1fr; gap:14px; padding:14px 0; border-bottom:1px solid #eee}
+  .row:last-child{border-bottom:none}
+  .time{font-weight:800}
+  .sec{margin:34px 0}
+  /* Two cards vertically (not side-by-side) */
+  .hero{margin:12px 0}
+  .hero-anillos{
+    margin: 24px auto; max-width:980px; height:420px; border-radius:18px;
+    background-image:url('IMG_1151.jpeg'); background-size:cover; background-position:center;
+    box-shadow:var(--shadow);
+  }
+  /* Dress code swatches (grays only) */
+  .swatches{display:flex; gap:10px; justify-content:center; margin-top:8px}
+  .sw{width:18px; height:18px; border-radius:50%; box-shadow:inset 0 0 0 1px rgba(0,0,0,.15)}
+  .sw.s1{background:#e9eaec}
+  .sw.s2{background:#cfd1d4}
+  .sw.s3{background:#aeb2b8}
+  .sw.s4{background:#8f949c}
+  /* Countdown */
+  .count-wrap{display:flex; gap:12px; justify-content:center; margin:14px 0 6px}
+  .box{background:#fff; border-radius:12px; box-shadow:var(--shadow); padding:12px 14px; min-width:78px; text-align:center}
+  .big{font-size:28px; font-weight:800}
+  .small{font-size:11px; letter-spacing:1px; color:var(--muted)}
+  footer{padding:30px 0; text-align:center; color:var(--muted); font-size:13px}
 </style>
 </head>
 <body>
 
-<!-- ENVELOPE MODAL (no duplicated instruction text) -->
+<!-- OVERLAY CON SOBRE (imagen ya incluye el texto y la leyenda) -->
 <div id="overlay">
-  <div id="envelopeBox">
-    <div class="envelopeWrap">
-      <img src="98524045-6D89-403D-91EB-25AD8EC7AF82.png" alt="Sobre con mensaje e iniciales">
-      <button id="waxBtn" aria-label="Abrir y activar música"></button>
-    </div>
+  <div id="envelopeModal">
+    <img src="98524045-6D89-403D-91EB-25AD8EC7AF82.png" alt="Sobre">
+    <button id="sealHit" aria-label="Tocar el sello"></button>
+    <!-- No duplicamos la leyenda: ya viene dentro del PNG -->
+    <div class="hint" style="display:none">Toca el sello para abrir y activar música</div>
   </div>
+  <audio id="bgMusic" src="music.mp3" preload="auto"></audio>
 </div>
 
-<audio id="song" preload="auto">
-  <source src="music.mp3" type="audio/mpeg">
-</audio>
+<div class="wrap">
+  <p class="lead">El amor nos unió… y en esta historia, comienza nuestro <b>para siempre</b>.</p>
+  <h1>Nayaret & Brian</h1>
+  <p class="lead">29 · 11 · 2025 · 5:00 p.m</p>
 
-<main>
-  <div class="container center">
-    <p style="letter-spacing:.5px;margin:8px 0 10px">El amor nos unió… y en esta historia, comienza nuestro <b>para siempre</b>.</p>
-    <h1>Nayaret & Brian</h1>
-    <p>29 · 11 · 2025 · 5:00 pm</p>
+  <!-- Love Story (texto + espacio para fotos) -->
+  <div class="divider"></div>
+  <section class="card center">
+    <h2>¡Nos casamos!</h2>
+    <p class="muted">Desde el primer día supimos que estábamos destinados a compartir la vida. El 29 de noviembre del 2025, celebraremos este amor que nos ha acompañado y crecido con nosotros desde el 2017.</p>
+    <div id="story" class="hero" aria-label="Love Story – espacio para fotos"></div>
+  </section>
 
-    <div class="sp-40"></div>
+  <!-- Itinerario -->
+  <div class="divider"></div>
+  <section class="sec">
+    <h2>Itinerario</h2>
+    <div class="card timeline">
+      <div class="row"><div class="time">5:00–6:00 pm</div><div>Ceremonia</div></div>
+      <div class="row"><div class="time">6:00–7:00 pm</div><div>Cóctel</div></div>
+      <div class="row"><div class="time">7:00 pm en adelante</div><div>Recepción</div></div>
+    </div>
+  </section>
 
-    <!-- Love Story (text) -->
-    <section class="card" id="story">
-      <h2>¡Nos casamos!</h2>
-      <div class="hr"></div>
-      <p style="margin-top:10px">Desde el primer día supimos que estábamos destinados a compartir la vida. El 29 de noviembre del 2025, celebraremos este amor que nos ha acompañado y crecido con nosotros desde el 2017.</p>
-    </section>
-
-    <div class="sp-40"></div>
-
-    <!-- Itinerario -->
-    <section>
-      <h2>Itinerario</h2>
-      <div class="hr"></div>
-      <div class="sp-40"></div>
-      <div class="tl">
-        <div class="tl-row"><div class="tl-time">5:00–6:00 pm</div><div class="tl-item">Ceremonia</div></div>
-        <div class="tl-row"><div class="tl-time">6:00–7:00 pm</div><div class="tl-item">Cóctel</div></div>
-        <div class="tl-row"><div class="tl-time">7:00 pm en adelante</div><div class="tl-item">Recepción</div></div>
+  <!-- Ubicación (sección independiente) -->
+  <div class="divider"></div>
+  <section id="ubicacion" class="sec">
+    <h2>Ubicación</h2>
+    <div class="card center">
+      <p><strong>Hotel Copamarina Beach Resort & Spa</strong><br>Guánica, Puerto Rico</p>
+      <p><a class="btn" href="https://maps.app.goo.gl/5LJSmsD4PoaHqRKh9" target="_blank" rel="noopener">Ver ubicación</a></p>
+      <div class="hero" style="border-radius:14px; overflow:hidden; max-width:760px; margin: 8px auto 0">
+        <img src="IMG_1149.jpeg" alt="Copamarina" style="width:100%; display:block">
       </div>
-    </section>
+    </div>
+  </section>
 
-    <div class="sp-40"></div>
+  <!-- Confirmación (sección independiente) -->
+  <div class="divider"></div>
+  <section id="confirmacion" class="sec">
+    <h2>Confirmación de asistencia</h2>
+    <div class="card center">
+      <p class="muted">Fecha límite para confirmar: <strong>1 de noviembre de 2025 · 11:59 p.m.</strong></p>
+      <p><a class="btn" href="https://forms.gle/knzmbFBHmdgirKWV9" target="_blank" rel="noopener">Confirmar asistencia</a></p>
+    </div>
+  </section>
 
-    <!-- Ubicación & Confirmación -->
-    <section class="grid2">
-      <div class="card center">
-        <h2>Ubicación</h2>
-        <div class="hr"></div>
-        <p style="margin:10px 0 18px"><strong>Hotel Copamarina Beach Resort & Spa</strong><br/>Guánica, Puerto Rico</p>
-        <a class="btn" href="https://maps.app.goo.gl/5LJSmsD4PoaHqRKh9" target="_blank" rel="noopener">Ver ubicación</a>
-        <div class="sp-40"></div>
-        <img src="IMG_1149.jpeg" alt="Foto Copamarina (ejemplo)" style="width:100%;border-radius:12px;box-shadow:var(--shadow)">
+  <!-- Código de vestimenta -->
+  <div class="divider"></div>
+  <section class="sec">
+    <h2>Código de vestimenta</h2>
+    <div class="card center">
+      <p><strong>Formal · Gris claro/medio o plateado.</strong> <span class="muted">Nota: la camisa de abajo de los hombres puede ser en tonalidades nude (blanco, crema, etc.).</span></p>
+      <div class="swatches">
+        <span class="sw s1" title="gris claro"></span>
+        <span class="sw s2" title="gris suave"></span>
+        <span class="sw s3" title="gris medio"></span>
+        <span class="sw s4" title="plateado"></span>
       </div>
-      <div class="card center">
-        <h2>Confirmación de asistencia</h2>
-        <div class="hr"></div>
-        <p style="margin:10px 0 18px">Fecha límite para confirmar: <strong>1 de noviembre de 2025 · 11:59 p.m.</strong></p>
-        <a class="btn" href="https://forms.gle/knzmbFBHmdgirKWV9" target="_blank" rel="noopener">Confirmar asistencia</a>
-      </div>
-    </section>
+      <p style="margin-top:14px"><a class="btn" href="https://pin.it/2AeKUykuk" target="_blank" rel="noopener">Ver inspiración en Pinterest</a></p>
+    </div>
+  </section>
 
-    <div class="sp-40"></div>
+  <!-- Obsequios -->
+  <div class="divider"></div>
+  <section class="sec">
+    <h2>Obsequios</h2>
+    <div class="card center">
+      <p><strong>¡El mejor obsequio que podemos recibir es compartir este día con ustedes!</strong><br>
+      <span class="muted">Si desean acompañarnos también con un detalle, agradeceremos con cariño su aporte en efectivo.</span></p>
+    </div>
+  </section>
 
-    <!-- Dress Code -->
-    <section class="card center">
-      <h2>Código de vestimenta</h2>
-      <div class="hr"></div>
-      <p style="margin-top:10px"><strong>Formal · Gris claro/medio o plateado.</strong> <span style="color:#777">Nota: la camisa de abajo de los hombres puede ser en tonalidades nude (blanco, crema, etc.).</span></p>
-      <div class="palette" style="justify-content:center">
-        <div class="dot g1"></div>
-        <div class="dot g2"></div>
-        <div class="dot g3"></div>
-        <div class="dot g4"></div>
-      </div>
-      <div style="margin-top:14px">
-        <a class="btn" href="https://pin.it/2AeKUykuk" target="_blank" rel="noopener">Ver inspiración en Pinterest</a>
-      </div>
-    </section>
+  <!-- Conteo regresivo -->
+  <div class="divider"></div>
+  <section class="sec center">
+    <h2>Conteo regresivo</h2>
+    <p class="muted">Solo faltan…</p>
+    <div class="count-wrap" id="count"></div>
+    <p class="muted">…para nuestro día especial.</p>
+    <p class="muted">29 de noviembre de 2025 · 5:00 p.m. · Guánica, PR</p>
+  </section>
 
-    <div class="sp-40"></div>
+  <!-- Mensaje final + Anillos de fondo -->
+  <div class="divider"></div>
+  <section class="sec center">
+    <p class="muted">Gracias por acompañarnos en el inicio de esta nueva etapa. Su cariño, su presencia y sus oraciones hacen aún más hermoso nuestro “sí”.</p>
+    <p class="muted"><em>“Hallé al amor de mi alma.” — Cantares 3:4</em></p>
+    <p style="letter-spacing:2px;font-weight:800">CON AMOR<br>NAYARET &amp; BRIAN</p>
+    <div class="hero-anillos" aria-label="Foto de anillos en arena"></div>
+  </section>
 
-    <!-- Obsequios -->
-    <section class="card center">
-      <h2>Obsequios</h2>
-      <div class="hr"></div>
-      <p style="margin-top:10px"><strong>¡El mejor obsequio que podemos recibir es compartir este día con ustedes!</strong><br/>Si desean acompañarnos también con un detalle, agradeceremos con cariño su aporte en efectivo.</p>
-    </section>
-
-    <div class="sp-40"></div>
-
-    <!-- Conteo -->
-    <section class="center">
-      <h2>Conteo regresivo</h2>
-      <div class="hr"></div>
-      <p style="margin:8px 0 2px">Solo faltan…</p>
-      <div id="count" class="count"></div>
-      <p style="margin:2px 0 16px">…para nuestro día especial.</p>
-      <p style="color:#777">29 de noviembre de 2025 · 5:00 p.m. · Guánica, PR</p>
-    </section>
-
-    <div class="sp-40"></div>
-
-    <!-- Cierre -->
-    <section class="center">
-      <p>Gracias por acompañarnos en el inicio de esta nueva etapa. Su cariño, su presencia y sus oraciones hacen aún más hermoso nuestro “sí”.</p>
-      <p style="font-style:italic">“Hallé al amor de mi alma.” — Cantares 3:4</p>
-      <p style="letter-spacing:3px;margin-top:18px">CON AMOR<br><strong>NAYARET & BRIAN</strong></p>
-      <div class="sp-40"></div>
-      <img class="closing-img" src="IMG_1151.jpeg" alt="Anillos en arena">
-    </section>
-
-  </div>
-</main>
-
-<footer>© Nayaret & Brian</footer>
+  <footer>© Nayaret & Brian</footer>
+</div>
 
 <script>
-// Countdown to 2025-11-29 17:00 local
-const target = new Date('2025-11-29T17:00:00');
-const el = document.getElementById('count');
-function tick(){
-  const now = new Date();
-  let diff = Math.max(0, target - now);
-  const s = Math.floor(diff/1000)%60;
-  diff = Math.floor(diff/1000/60);
-  const m = diff%60; diff = Math.floor(diff/60);
-  const h = diff%24; const d = Math.floor(diff/24);
-  el.innerHTML = ['DÍAS','HORAS','MINUTOS','SEGUNDOS'].map((lbl,i)=>{
-     const val = [d,h,m,s][i];
-     return `<div class="box"><strong>${val}</strong><span>${lbl}</span></div>`;
-  }).join('');
-}
-setInterval(tick,1000); tick();
+// Countdown (keeps your date)
+(function(){
+  const end = new Date('2025-11-29T17:00:00-04:00').getTime();
+  const $c = document.getElementById('count');
+  function fmt(n){return n.toString().padStart(2,'0');}
+  function tick(){
+    const now = Date.now();
+    let s = Math.max(0, Math.floor((end - now)/1000));
+    const d = Math.floor(s/86400); s%=86400;
+    const h = Math.floor(s/3600);  s%=3600;
+    const m = Math.floor(s/60);    s%=60;
+    const boxes = [
+      {v:d,l:'DÍAS'},{v:h,l:'HORAS'},{v:m,l:'MINUTOS'},{v:s,l:'SEGUNDOS'}
+    ].map(x => `<div class="box"><div class="big">${fmt(x.v)}</div><div class="small">${x.l}</div></div>`).join('');
+    $c.innerHTML = boxes;
+  }
+  tick(); setInterval(tick,1000);
+})();
 
-// Wax button -> close modal + play music
+// Seal click: play music + close overlay ONLY when clicking the seal
+const seal = document.getElementById('sealHit');
 const overlay = document.getElementById('overlay');
-const waxBtn = document.getElementById('waxBtn');
-const song = document.getElementById('song');
-let opened = false;
-function openInvite(){
-  if(opened) return;
-  opened = true;
-  overlay.style.opacity = '0';
-  setTimeout(()=>{ overlay.style.display='none'; }, 280);
-  // start audio (user gesture already happened)
-  song.currentTime = 0;
-  song.play().catch(()=>{});
-}
-waxBtn.addEventListener('click', openInvite);
-overlay.addEventListener('click', (e)=>{
-  // only close if they click outside the image
-  if(e.target.id==='overlay') openInvite();
+seal.addEventListener('click', ()=>{
+  const a = document.getElementById('bgMusic');
+  if(a){ a.currentTime = 0; a.play().catch(()=>{}); }
+  overlay.style.display='none';
 });
+// prevent any other area from starting music
+overlay.addEventListener('click', (e)=>{
+  if(e.target === overlay){ /* click outside seal does nothing */ }
+});
+
 </script>
 </body>
 </html>
