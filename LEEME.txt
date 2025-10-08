@@ -1,10 +1,1 @@
-INSTRUCCIONES RÁPIDAS (versión final)
-1) Sube estos archivos a tu repositorio (carpeta raíz):
-   - index.html
-   - LEEME.txt
-2) Asegúrate de que existan en el repo con EXACTOS nombres estas imágenes y audio:
-   - 4E828E39-AF2C-42A6-AA18-96AC1A6DB69A.png   (sobre con playa)
-   - IMG_1149.jpeg   (foto Copamarina)
-   - IMG_1151.jpeg   (foto anillos)
-   - music.mp3       (canción)
-3) Publica/actualiza GitHub Pages (branch main). Listo.
+Sube index.html y mantén los nombres de archivos tal cual en tu repo.
