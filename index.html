@@ -1,215 +1,23 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Invitación · Nayaret & Brian</title>
-<link rel="preload" as="audio" href="music.mp3">
-<style>
-  :root{
-    --bg:#faf6f1;
-    --panel:#ffffff;
-    --ink:#1f1c17;
-    --muted:#7a746a;
-    --gold:#c7a56a;
-    --shadow:0 10px 30px rgba(0,0,0,.08);
-  }
-  html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family: ui-serif, 'Georgia', 'Times New Roman', serif;}
-  .wrap{max-width:980px;margin:0 auto;padding:24px;}
-  h1,h2,h3{font-weight:800; letter-spacing:.2px; margin:0 0 10px}
-  h1{font-size: clamp(34px,5vw,56px);text-align:center;}
-  h2{font-size: clamp(26px,4vw,38px);text-align:center;}
-  p{line-height:1.6}
-  .muted{color:var(--muted)}
-  .card{background:var(--panel);border-radius:18px;box-shadow:var(--shadow);padding:22px}
-  .center{text-align:center}
-  .btn{display:inline-block;border:2px solid #c7a56a;padding:10px 18px;border-radius:28px;text-decoration:none;color:var(--ink);font-weight:600}
-  .divider{height:18px}
-  .lead{font-size: clamp(14px,2.1vw,17px); text-align:center; color:var(--muted)}
-  /* Envelope overlay */
-  #overlay{
-    position: fixed; inset:0; background:rgba(0,0,0,.42);
-    display:flex; align-items:center; justify-content:center; z-index:9999;
-  }
-  #envelopeModal{position:relative; width:min(880px,92vw); border-radius:18px; box-shadow:var(--shadow);}
-  #envelopeModal img{display:block; width:100%; border-radius:18px}
-  #sealHit{
-    position:absolute; left:50%; top:66%;
-    transform:translate(-50%,-50%);
-    width:90px; height:90px; border-radius:50%;
-    background:transparent; border:none; cursor:pointer; z-index:3;
-  }
-  .hint{position:absolute; left:50%; bottom:14px; transform:translateX(-50%);
-        background:rgba(0,0,0,.6); color:#fff; padding:8px 12px; border-radius:16px; font-size:13px}
-  /* Timeline */
-  .timeline{overflow:hidden}
-  .row{display:grid; grid-template-columns: 180px 1fr; gap:14px; padding:14px 0; border-bottom:1px solid #eee}
-  .row:last-child{border-bottom:none}
-  .time{font-weight:800}
-  .sec{margin:34px 0}
-  /* Two cards vertically (not side-by-side) */
-  .hero{margin:12px 0}
-  .hero-anillos{
-    margin: 24px auto; max-width:980px; height:420px; border-radius:18px;
-    background-image:url('IMG_1151.jpeg'); background-size:cover; background-position:center;
-    box-shadow:var(--shadow);
-  }
-  /* Dress code swatches (grays only) */
-  .swatches{display:flex; gap:10px; justify-content:center; margin-top:8px}
-  .sw{width:18px; height:18px; border-radius:50%; box-shadow:inset 0 0 0 1px rgba(0,0,0,.15)}
-  .sw.s1{background:#e9eaec}
-  .sw.s2{background:#cfd1d4}
-  .sw.s3{background:#aeb2b8}
-  .sw.s4{background:#8f949c}
-  /* Countdown */
-  .count-wrap{display:flex; gap:12px; justify-content:center; margin:14px 0 6px}
-  .box{background:#fff; border-radius:12px; box-shadow:var(--shadow); padding:12px 14px; min-width:78px; text-align:center}
-  .big{font-size:28px; font-weight:800}
-  .small{font-size:11px; letter-spacing:1px; color:var(--muted)}
-  footer{padding:30px 0; text-align:center; color:var(--muted); font-size:13px}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invitación - Nayaret & Brian</title>
+  <style>
+    body { font-family: 'Times New Roman', serif; background-color: #fdfaf5; color: #2f2f2f; text-align: center; }
+    h1 { margin-top: 40px; font-size: 2em; }
+    .love-story img { width: 90%; border-radius: 12px; margin-top: 20px; }
+  </style>
 </head>
 <body>
-
-<!-- OVERLAY CON SOBRE (imagen ya incluye el texto y la leyenda) -->
-<div id="overlay">
-  <div id="envelopeModal">
-    <img src="98524045-6D89-403D-91EB-25AD8EC7AF82.png" alt="Sobre">
-    <button id="sealHit" aria-label="Tocar el sello"></button>
-    <!-- No duplicamos la leyenda: ya viene dentro del PNG -->
-    <div class="hint" style="display:none">Toca el sello para abrir y activar música</div>
-  </div>
-  <audio id="bgMusic" src="music.mp3" preload="auto"></audio>
-</div>
-
-<div class="wrap">
-  <p class="lead">El amor nos unió… y en esta historia, comienza nuestro <b>para siempre</b>.</p>
   <h1>Nayaret & Brian</h1>
-  <p class="lead">29 · 11 · 2025 · 5:00 p.m</p>
-
-  <!-- Love Story (texto + espacio para fotos) -->
-  <div class="divider"></div>
-  <section class="card center">
-    <h2>¡Nos casamos!</h2>
-    <p class="muted">Desde el primer día supimos que estábamos destinados a compartir la vida. El 29 de noviembre del 2025, celebraremos este amor que nos ha acompañado y crecido con nosotros desde el 2017.</p>
-    <div id="story" class="hero" aria-label="Love Story – espacio para fotos"></div>
+  <p>¡Nos casamos!</p>
+  <section class="love-story">
+    <h2>Nuestra historia</h2>
+    <img src="IMG_3445.jpeg" alt="Foto de Love Story">
   </section>
-
-  <!-- Itinerario -->
-  <div class="divider"></div>
-  <section class="sec">
-    <h2>Itinerario</h2>
-    <div class="card timeline">
-      <div class="row"><div class="time">5:00–6:00 pm</div><div>Ceremonia</div></div>
-      <div class="row"><div class="time">6:00–7:00 pm</div><div>Cóctel</div></div>
-      <div class="row"><div class="time">7:00 pm en adelante</div><div>Recepción</div></div>
-    </div>
-  </section>
-
-  <!-- Ubicación (sección independiente) -->
-  <div class="divider"></div>
-  <section id="ubicacion" class="sec">
-    <h2>Ubicación</h2>
-    <div class="card center">
-      <p><strong>Hotel Copamarina Beach Resort & Spa</strong><br>Guánica, Puerto Rico</p>
-      <p><a class="btn" href="https://maps.app.goo.gl/5LJSmsD4PoaHqRKh9" target="_blank" rel="noopener">Ver ubicación</a></p>
-      <div class="hero" style="border-radius:14px; overflow:hidden; max-width:760px; margin: 8px auto 0">
-        <img src="IMG_1149.jpeg" alt="Copamarina" style="width:100%; display:block">
-      </div>
-    </div>
-  </section>
-
-  <!-- Confirmación (sección independiente) -->
-  <div class="divider"></div>
-  <section id="confirmacion" class="sec">
-    <h2>Confirmación de asistencia</h2>
-    <div class="card center">
-      <p class="muted">Fecha límite para confirmar: <strong>1 de noviembre de 2025 · 11:59 p.m.</strong></p>
-      <p><a class="btn" href="https://forms.gle/knzmbFBHmdgirKWV9" target="_blank" rel="noopener">Confirmar asistencia</a></p>
-    </div>
-  </section>
-
-  <!-- Código de vestimenta -->
-  <div class="divider"></div>
-  <section class="sec">
-    <h2>Código de vestimenta</h2>
-    <div class="card center">
-      <p><strong>Formal · Gris claro/medio o plateado.</strong> <span class="muted">Nota: la camisa de abajo de los hombres puede ser en tonalidades nude (blanco, crema, etc.).</span></p>
-      <div class="swatches">
-        <span class="sw s1" title="gris claro"></span>
-        <span class="sw s2" title="gris suave"></span>
-        <span class="sw s3" title="gris medio"></span>
-        <span class="sw s4" title="plateado"></span>
-      </div>
-      <p style="margin-top:14px"><a class="btn" href="https://pin.it/2AeKUykuk" target="_blank" rel="noopener">Ver inspiración en Pinterest</a></p>
-    </div>
-  </section>
-
-  <!-- Obsequios -->
-  <div class="divider"></div>
-  <section class="sec">
-    <h2>Obsequios</h2>
-    <div class="card center">
-      <p><strong>¡El mejor obsequio que podemos recibir es compartir este día con ustedes!</strong><br>
-      <span class="muted">Si desean acompañarnos también con un detalle, agradeceremos con cariño su aporte en efectivo.</span></p>
-    </div>
-  </section>
-
-  <!-- Conteo regresivo -->
-  <div class="divider"></div>
-  <section class="sec center">
-    <h2>Conteo regresivo</h2>
-    <p class="muted">Solo faltan…</p>
-    <div class="count-wrap" id="count"></div>
-    <p class="muted">…para nuestro día especial.</p>
-    <p class="muted">29 de noviembre de 2025 · 5:00 p.m. · Guánica, PR</p>
-  </section>
-
-  <!-- Mensaje final + Anillos de fondo -->
-  <div class="divider"></div>
-  <section class="sec center">
-    <p class="muted">Gracias por acompañarnos en el inicio de esta nueva etapa. Su cariño, su presencia y sus oraciones hacen aún más hermoso nuestro “sí”.</p>
-    <p class="muted"><em>“Hallé al amor de mi alma.” — Cantares 3:4</em></p>
-    <p style="letter-spacing:2px;font-weight:800">CON AMOR<br>NAYARET &amp; BRIAN</p>
-    <div class="hero-anillos" aria-label="Foto de anillos en arena"></div>
-  </section>
-
-  <footer>© Nayaret & Brian</footer>
-</div>
-
-<script>
-// Countdown (keeps your date)
-(function(){
-  const end = new Date('2025-11-29T17:00:00-04:00').getTime();
-  const $c = document.getElementById('count');
-  function fmt(n){return n.toString().padStart(2,'0');}
-  function tick(){
-    const now = Date.now();
-    let s = Math.max(0, Math.floor((end - now)/1000));
-    const d = Math.floor(s/86400); s%=86400;
-    const h = Math.floor(s/3600);  s%=3600;
-    const m = Math.floor(s/60);    s%=60;
-    const boxes = [
-      {v:d,l:'DÍAS'},{v:h,l:'HORAS'},{v:m,l:'MINUTOS'},{v:s,l:'SEGUNDOS'}
-    ].map(x => `<div class="box"><div class="big">${fmt(x.v)}</div><div class="small">${x.l}</div></div>`).join('');
-    $c.innerHTML = boxes;
-  }
-  tick(); setInterval(tick,1000);
-})();
-
-// Seal click: play music + close overlay ONLY when clicking the seal
-const seal = document.getElementById('sealHit');
-const overlay = document.getElementById('overlay');
-seal.addEventListener('click', ()=>{
-  const a = document.getElementById('bgMusic');
-  if(a){ a.currentTime = 0; a.play().catch(()=>{}); }
-  overlay.style.display='none';
-});
-// prevent any other area from starting music
-overlay.addEventListener('click', (e)=>{
-  if(e.target === overlay){ /* click outside seal does nothing */ }
-});
-
-</script>
+  <footer><p>© Nayaret & Brian</p></footer>
 </body>
 </html>
